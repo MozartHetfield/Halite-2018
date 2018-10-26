@@ -1,0 +1,68 @@
+							HALITE II - ROUND II
+    		  - fighting against a single enemy - basic bot -
+
+	
+	Ideea pe care se bazeaza rezultatele este una banala, bazata pe mai multe
+observatii (si pe faptul ca un incercarile unui algoritm exhaustiv a dat roade
+pe maximum 2 teste simultan), si anume:
+	- cu cat mai multe nave se afla in procesul de dock pe o planeta, cu atat
+	  se vor spama mai multe si vor asalta numeros;
+	- la ciocnirea a doua nave, fiecare va fi distrusa (plasarea simultana pe
+	  aceeasi pozitie a hartii a centrului fiecarei nave), iar daca se afla in
+	  raza alteia inamice, isi vor da damage fix la un interval bine definit;
+	- daca o nava inamica se afla in raza a doua nave aliate, damage-ul navei
+	  inamice se va imparti la cele 2 (unde-s multi puterea creste!);
+
+	Asadar, algoritmul se bazeaza pe rush-ul navelor catre cele adversare, care
+sunt setate sa faca dock pe cea mai apropiata planeta in incpipitul jocului. In-
+trucat numarul de nave al fiecarui player va fi acelasi la inceput, trebuie pro-
+fitat de observatiile enumerate mai sus. Astfel, atacul navelor trebuie sa fie unul
+controlat, fara sa se indrepte catre centrul uneia adverse, rezultand in distrugerea
+amandurora si eventuala victorie a bot-ului datorita unei nave rezultate din dock.
+	Dupa numeroase incercari, a fost creata functia returnMagicPosition din GameMap,
+care primeste ca argument nava care trebuie atacata si returneaza o pozitie ce 
+ghideaza nava aliata in jurul acesteia, profitand, astfel, de starea sa de dock
+si de nepregatirea botului pe situatia initiala.
+	Tot ce a ramas de aflat pentru a pune in practica algoritmul sunt chiar
+target-urile noastre, ship-urile inamice. In acest sens a fost facuta functia
+getEnemy() din GameMap, ce functioneaza doar in cazul in care lupta este de 1vs1,
+si gaseste tipul Player al botului. Deoarece ships-urile sunt tinute sub forma de
+Map, am facut functia getShipsInArray din clasa Player, ce converteste Map-ul
+respectiv intr-un ArrayList<Ship>. Timpul costa puncte si nu trebuie intarziat
+niciun atac in niciun fel. De aceea viteza s-a modificat pe cea maxima, iar
+abordarea navelor inamice se face in ordinea distantei minime catre acestea.
+Deci, s-a facut un comparator ce sorteaza crescator in functie de distanta, ce
+va fi apelat la fiecare parcurgere a for-ului de nave astfel incat fiecare
+ship sa se indrepte catre adversarul cel mai apropiat.
+
+	Abordarea proiectului a decurs astfel:
+	- Soare Alexandru impreuna cu Dumitrascu Catalin au incercat sa realizeze
+solutia exhaustiva, realizand un model ce imita cat mai mult bot-ul, generand
+diverse abordari precum:
+		- schimbarea comportamentului programului dupa avansarea in numarul de runde,
+		  impartind navele pe mai multe planete, ori sortand planetele si in functie de
+		  raza lor (distanta catre planeta - o constanta ~ 1.2-1.4 * raza ei);
+		- creand un array de target-uri, incluzand ship-urile adverse si planetele
+		  adversare si neutre (cu owner enemyId sau -1) si parcurgandu-le in functie
+		  de sortarea de mai sus, aplicata si pe nave;
+		etc.
+	- Soare Alexandru s-a ocupat de cod 60% din timp, in timp ce Dumitrascu Catalin 30%,
+iar Cocoara Oana 10%, Dumitrascu Catalin si Cocoara Oana ocupandu-se mai mult de
+partea de research, intrucat nu aveau disponibile laptop-urile in majoritatea timpului;
+	- Ajungand la maximul specificat mai sus, respectiv 18 puncte, Oana observat
+in urma analizarii replay-urilor ca, avand in vedere ca implementarea de pana acum a fost
+similara in proportie mare cu cea a bot-ului, ca ambele parti dispun de o slabiciune:
+lipsa de aparare in pozitia de docked. Nereusind sa realizam o aparare eficienta care
+sa acopere toate cazurile in care avem navele pe docked, s-a decis testarea vulnerabi-
+litatii adversarului in cea mai periculoasa situatie pentru el, si anume la inceput, cand
+este lipsit de aparare. Prima incercare avea coordonatele pozitiilor setate pe x + 1, res-
+pectiv y + 1, ajungand la un total de 27 de puncte. Dupa incercari favorabile ale pozitiilor
+pe care ar putea ataca ship-urile noastre, s-a ajuns la acest numar magic, ales in urma
+incercarilor, de x - 3, y + 1, ce trece fix 5 din cele 8 teste si aduce punctaj maxim
+aferent acestei runde.
+
+	note:
+
+	*e putin frustant cum am avut impresia de o gramada de ori ca de data asta chiar
+	ne va iesi, urmand ca in final solutia sa fie atat de banala, fiind nevoiti
+	sa stergem peste jumate din lucrurile deja implementate, deoarece au devenit inutile*
