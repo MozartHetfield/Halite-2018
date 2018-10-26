@@ -1,4 +1,4 @@
-							HALITE II - ROUND II
+			    HALITE II - ROUND II
     		  - fighting against a single enemy - basic bot -
 
 	
@@ -34,35 +34,3 @@ abordarea navelor inamice se face in ordinea distantei minime catre acestea.
 Deci, s-a facut un comparator ce sorteaza crescator in functie de distanta, ce
 va fi apelat la fiecare parcurgere a for-ului de nave astfel incat fiecare
 ship sa se indrepte catre adversarul cel mai apropiat.
-
-	Abordarea proiectului a decurs astfel:
-	- Soare Alexandru impreuna cu Dumitrascu Catalin au incercat sa realizeze
-solutia exhaustiva, realizand un model ce imita cat mai mult bot-ul, generand
-diverse abordari precum:
-		- schimbarea comportamentului programului dupa avansarea in numarul de runde,
-		  impartind navele pe mai multe planete, ori sortand planetele si in functie de
-		  raza lor (distanta catre planeta - o constanta ~ 1.2-1.4 * raza ei);
-		- creand un array de target-uri, incluzand ship-urile adverse si planetele
-		  adversare si neutre (cu owner enemyId sau -1) si parcurgandu-le in functie
-		  de sortarea de mai sus, aplicata si pe nave;
-		etc.
-	- Soare Alexandru s-a ocupat de cod 60% din timp, in timp ce Dumitrascu Catalin 30%,
-iar Cocoara Oana 10%, Dumitrascu Catalin si Cocoara Oana ocupandu-se mai mult de
-partea de research, intrucat nu aveau disponibile laptop-urile in majoritatea timpului;
-	- Ajungand la maximul specificat mai sus, respectiv 18 puncte, Oana observat
-in urma analizarii replay-urilor ca, avand in vedere ca implementarea de pana acum a fost
-similara in proportie mare cu cea a bot-ului, ca ambele parti dispun de o slabiciune:
-lipsa de aparare in pozitia de docked. Nereusind sa realizam o aparare eficienta care
-sa acopere toate cazurile in care avem navele pe docked, s-a decis testarea vulnerabi-
-litatii adversarului in cea mai periculoasa situatie pentru el, si anume la inceput, cand
-este lipsit de aparare. Prima incercare avea coordonatele pozitiilor setate pe x + 1, res-
-pectiv y + 1, ajungand la un total de 27 de puncte. Dupa incercari favorabile ale pozitiilor
-pe care ar putea ataca ship-urile noastre, s-a ajuns la acest numar magic, ales in urma
-incercarilor, de x - 3, y + 1, ce trece fix 5 din cele 8 teste si aduce punctaj maxim
-aferent acestei runde.
-
-	note:
-
-	*e putin frustant cum am avut impresia de o gramada de ori ca de data asta chiar
-	ne va iesi, urmand ca in final solutia sa fie atat de banala, fiind nevoiti
-	sa stergem peste jumate din lucrurile deja implementate, deoarece au devenit inutile*
