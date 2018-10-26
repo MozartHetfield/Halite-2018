@@ -35,22 +35,3 @@ sa se ataseze ei.
 	Complexitatea pe niste cazuri largi ar parea una mare, intrucat facem
 sortarea de fiecare data cand iteram prin nave, insa numarul de planete este
 unul mic, deci nu vom avea probleme cu acest lucru.
-
-	Abordarea proiectului a decurs astfel:
-	- Soare Alexandru, Dumitrascu Catalin si Cocoara Oana au decis sa se gandeasca
-separat la cate un algoritm care sa duce la scopul comun, urmand sa se aleaga
-cel mai profitabil;
-	- S-a ajuns la concluzia ca Dumitrascu Catalin a avut cea mai apropiata so-
-lutie de cea implementata, si a continuat cu implementarea efectiva a codului;
-	- Dupa implementarea lui, Soare Alexandru a venit cu modificari in privinta
-ArrayLists-urilor reservedPlanets si dockedPlanets, in timp ce Oana Cocoara
-a vizionat replay-urile pentru a sesiza eventualele neconcordante.
-
-	Sursele de inspiratie au constituit in mare parte surse de pe internet, insa
-au fost de ajutor doar cu privire la sintaxa, vazand exemple de utilizare
-a starter kit-ului.
-
-	Ca instructiuni de compilare: 
-	Etapa curenta este realizata in java, deci a fost nevoie de instalarea 
-jdk-ului (9), si de crearea unui Makefile pentru a putea converti fisierele
-.java in .class.
