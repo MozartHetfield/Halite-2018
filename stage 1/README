@@ -1,0 +1,56 @@
+							HALITE II - ROUND I
+      - conquering a map in single player mode without self collisions -
+
+	
+	Codul reuseste sa cucereasca toate planetele conform cerintelor impuse (fara
+coliziuni intre nave si intr-un timp mai mic decat soft time-ul impus).
+	Punctul de plecare il reprezinta starter kit-ul, fisierele .java din
+folder-ul hlt/ si fisierul ce contine toate modificarile facute de catre noi:
+MyBot.java.
+	Se remarca inaintea for-ului ce efectueaza miscarile existenta a 3 
+ArrayLists, si anume: allPlanets, folosita pentru a putea sorta planetele
+(procedura detaliat imediat); dockedPlanets, planetele care prezinta cel
+putin o nava atasata la ele (docked); reservedPlanets, reprezentand planetele
+spre care deja se indreapta o nava, pentru a evita situatiile in care mai multe
+nave se vor duce catre aceeasi planeta.
+	Astfel, in intrarea in parcurgerea prin nave, prima implementare adusa de
+noi este de a face un comparator, distanceToShip, situat in interiorul for-ului
+de nave pentru a putea compara de fiecare data planeta fata de care are distanta
+cea mai mica. Astfel, lista creata mai sus, allPlanets, este sortata pentru
+fiecare nava, diferit, in functie de distantele favorabile lor. Bineinteles,
+pentru parcurgere este nevoie de un iterator, vrand acum sa trecem prin toate
+planetele in ordinea distantelor minime.
+	Aici incepem cu cazul in care fiecare planeta este docked, caz in care
+nu vrem ca navele noastre sa se spawneze si sa stea degeaba, ci sa isi dea
+dock la planeta de la care au spawnat, neajungandu-se la o limita foarte mare,
+deoarece harta se cucereste rapid.
+	Dupa aceea, daca planeta este cucerita, contine cel putin o nava atasata, ori
+este deja rezervata de o alta nava, trecem mai departe.
+	Urmatorul caz presupune aflarea unei planete in zona in care se poate atasa,
+caz in care face acest lucru si introduce planeta in dockedPlanets.
+	Daca nicio conditie de sus nu este validata, se va trimite ship-ul
+respectiv catre planeta selectata, urmand ca intr-un numar de pasi sa poata
+sa se ataseze ei.
+
+	Complexitatea pe niste cazuri largi ar parea una mare, intrucat facem
+sortarea de fiecare data cand iteram prin nave, insa numarul de planete este
+unul mic, deci nu vom avea probleme cu acest lucru.
+
+	Abordarea proiectului a decurs astfel:
+	- Soare Alexandru, Dumitrascu Catalin si Cocoara Oana au decis sa se gandeasca
+separat la cate un algoritm care sa duce la scopul comun, urmand sa se aleaga
+cel mai profitabil;
+	- S-a ajuns la concluzia ca Dumitrascu Catalin a avut cea mai apropiata so-
+lutie de cea implementata, si a continuat cu implementarea efectiva a codului;
+	- Dupa implementarea lui, Soare Alexandru a venit cu modificari in privinta
+ArrayLists-urilor reservedPlanets si dockedPlanets, in timp ce Oana Cocoara
+a vizionat replay-urile pentru a sesiza eventualele neconcordante.
+
+	Sursele de inspiratie au constituit in mare parte surse de pe internet, insa
+au fost de ajutor doar cu privire la sintaxa, vazand exemple de utilizare
+a starter kit-ului.
+
+	Ca instructiuni de compilare: 
+	Etapa curenta este realizata in java, deci a fost nevoie de instalarea 
+jdk-ului (9), si de crearea unui Makefile pentru a putea converti fisierele
+.java in .class.
