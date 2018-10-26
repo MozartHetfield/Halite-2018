@@ -1,0 +1,21 @@
+							HALITE II - ROUND III
+    		  		- fighting against a 2-4 enemies -
+
+	Demersul algoritmului utilizat a decurs in felul urmator: s-a incercat un algo-
+ritm ce a fost incercat la etapa a 2-a, insa fara succes, care obtinea in jur de
+13 puncte. Dupa diverse modificari, am observat in comportamentul bot-ului
+Hunter, ca atunci cand mai raman cu o nava, daca imi setez pozitia cores-
+punzator, nu voi putea fi atacat si voi sfarsi pe locul 2. In cele din urma,
+s-au obtinut mai multe puncte daca facem asta de la inceputul rundei, deoarece
+ne setam pozitia fara a fi nevoie sa evitam prea multi adversari. Asadar, am
+selectat experimental extremitatile hartii in care putem duce navele pentru
+a fi evitate de adversari, rezultand in numeroase pozitii de 2 ce aduce puncta-
+jul aferent. Se duc in directii diferite datorita faptului ca ne dorim lipsa
+coliziunii cu navele inamice, pentru a nu iesi prematur din joc si, implicit,
+lipsa coliziunii navelor noastre, pentru a avea o sansa mai scazuta de coliziune
+cu cele adversare.
+	
+	Abordarea proiectului a decurs astfel:
+	
+	In decursul unei singure zile, s-a decis daca sa ramana bot-ul anterior sau nu.
+Dupa acea observatie, detaliata mai sus, s-a realizat implementarea si c'est fini.
